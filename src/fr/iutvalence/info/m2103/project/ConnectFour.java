@@ -13,11 +13,12 @@ public class ConnectFour
 	// TODO constructors?
 	
 	/**
-	 * launch a game
+	 * launch a new game
 	 */
 	
 	public void play()
 	{
-		Grid grilleDeJeu = new Grid();
+		//Grid grid = new Grid();
+		
 	}
 }

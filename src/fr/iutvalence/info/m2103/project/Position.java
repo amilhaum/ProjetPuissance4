@@ -23,7 +23,7 @@ public class Position
 	
 	/**
 	 * return the number of the targeted line
-	 * @return
+	 * @return the line of the targeted line
 	 */
 	
 	public int getNumberOfLine()
@@ -33,7 +33,7 @@ public class Position
 	
 	/**
 	 * return the number of the targeted column
-	 * @return
+	 * @return the line of the targeted column
 	 */
 	
 	public int getNumberOfColumn()
