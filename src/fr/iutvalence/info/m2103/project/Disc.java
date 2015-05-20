@@ -26,7 +26,7 @@ public class Disc
 	}
 	
 	/**
-	 * give the color of the disc
+	 * Give the color of the disc
 	 * @return discColor
 	 */
 	

@@ -7,13 +7,10 @@ public enum DiscColor
 	
 	YELLOW_DISC;
 
-	
-	
 	public String toString()
 	{
 		if(this==RED_DISC) return "R";
 		else return "Y";
 	}
-
-
+	
 }

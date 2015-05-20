@@ -16,7 +16,6 @@ public class Grid
 	private DiscColor[][] cells;
 	
 	private int numberOfLines;
-	
 	private int numberOfColumns;
 	
 	/**
@@ -46,15 +45,23 @@ public class Grid
 		return this.cells[position.getNumberOfLine()][position.getNumberOfColumn()];
 	}
 	
-	/**
-	 * play a single shot in the grid
-	 * @param col
-	 * @param joueur
-	 */
+/**
+ * Play a single in shot in the grid and analyse if the last shot play allow the player to win, or not.
+ * @param col
+ * @param joueur
+ * @return boolean
+ */
 	
-	public void playAShot(int col, Joueur joueur)
+	public boolean playAShot(int col, Joueur joueur)
 	{
-		for(int line=7;line!=-1;line--)
+		int line=0;
+		int delta=1;
+		int compteur1=0;
+		int compteur2=0;
+		int compteur3=0;
+		int compteur4=0;
+
+		for(line=7;line!=-1;line--)
 		{
 			if(cells[line][col]==null)
 			{
@@ -62,31 +69,87 @@ public class Grid
 				break;
 			}
 		}
-	}
-	
-	/**
-	 * on cherche le nombre de pion de même couleur dans une direction puis on additionne pour savoir si les 4 sont alignés
-	 * @param position
-	 * @return
-	 */
-	
-	public int countInDirection(Position position)
-	{
 		
-	}
-	
-	
-/**	
-	public boolean search4InLine ()
-	{
-		int compteur;
-		int col=0;
-		for(int depLine=0;depLine<=NUMBER_OF_LINES;depLine++)
+		for(int rLine=line;rLine<=NUMBER_OF_LINES;rLine++)
 		{
-			while(cells[depLine][col]=)
+			for(int lLine=line;lLine>=0;lLine--)
+			{
+				if(cells[rLine][col]==Joueur.couleurJoueur)
+				{
+					compteur1++;
+				}
+				if(cells[lLine][col]==Joueur.couleurJoueur)
+				{
+					compteur1++;
+				}
+				if(compteur1==4)
+				{
+					return true;
+				}
+			}
 		}
+		
+		for(int uCol=col;uCol<=NUMBER_OF_COLUMNS;uCol++)
+			{
+			for(int lCol=col;lCol>=0;lCol--)
+				{
+					if(cells[line][uCol]==Joueur.couleurJoueur)
+					{
+						compteur2++;
+					}
+					if(cells[line][lCol]==Joueur.couleurJoueur)
+					{
+							compteur2++;
+					}
+					if(compteur2==4)
+					{
+						return true;
+					}
+				}
+			}
+		
+		for(int rLine=line;rLine<=NUMBER_OF_LINES;rLine++)
+		{
+			for(int uCol=col;uCol<=NUMBER_OF_COLUMNS;uCol++)
+			{
+				for(int lLine=line;lLine>=0;lLine--)
+				{
+					for(int lCol=col;lCol>=0;lCol--)
+					{
+							if(cells[rLine][uCol]==Joueur.couleurJoueur)
+							{
+								compteur3++;
+							}
+							if(cells[rLine][lCol]==Joueur.couleurJoueur)
+							{
+								compteur4++;
+							}
+							if(cells[lLine][uCol]==Joueur.couleurJoueur)
+							{
+								compteur4++;
+							}
+							if(cells[lLine][lCol]==Joueur.couleurJoueur)
+							{
+								compteur3++;
+							}
+							if(compteur3==4 || compteur4==4)
+							{
+								return true;
+							}
+							rLine=rLine+delta;
+							uCol=uCol+delta;
+							lLine=lLine-delta;
+							lCol=lCol-delta;
+							delta++;
+					}
+				}
+			}
+		}
+		return false;
 	}
-**/	
+	
+	
+
 	/**
 	 * Give a representation in ASCII-art of the grid
 	 */
@@ -107,5 +170,3 @@ public class Grid
 		return gridConnectFourAsciiArt;
 	}
 }
-
-
